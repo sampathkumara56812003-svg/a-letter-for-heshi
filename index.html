@@ -48,6 +48,38 @@ button {
   font: inherit;
 }
 
+/* Intro Overlay */
+#intro-overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--bg);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 22px;
+  transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+#intro-overlay.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.intro-content {
+  max-width: 500px;
+  animation: fadeUp 1.5s ease both;
+}
+
+.intro-heart {
+  font-size: 50px;
+  color: var(--pink);
+  margin-bottom: 15px;
+  animation: heartbeat 2s infinite;
+}
+
 #stars {
   position: fixed;
   inset: 0;
@@ -195,29 +227,6 @@ h1 span {
   background: var(--pink);
   color: #301324;
   border-color: var(--pink);
-}
-
-.music-btn {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  z-index: 100;
-  background: #ff8bb822;
-  border: 1px solid #ff8bb888;
-  color: var(--light);
-  border-radius: 50px;
-  padding: 8px 16px;
-  font-size: 12px;
-  cursor: pointer;
-  backdrop-filter: blur(5px);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-}
-
-.music-btn:hover {
-  background: #ff8bb844;
 }
 
 .section-label {
@@ -489,16 +498,25 @@ footer {
 </head>
 
 <body>
-<div id="stars" aria-hidden="true"></div>
+<!-- Adaraniya Intro Page Overlay -->
+<div id="intro-overlay">
+  <div class="intro-content">
+    <div class="intro-heart">🤍</div>
+    <div class="eyebrow" style="margin-bottom: 10px;">Special Delivery</div>
+    <h1 style="font-size: clamp(32px, 8vw, 55px); margin-bottom: 15px;">For Heshi...</h1>
+    <p style="color: var(--muted); margin-bottom: 25px; font-size: 16px;">
+      Patiyeku weni adaraharyen nimiduna kathaawak, oyata witharak wen wunu special lipiyak meka.
+    </p>
+    <button class="btn primary" id="openBtn" type="button">Open With Love ✨</button>
+  </div>
+</div>
 
 <!-- Background Audio -->
 <audio id="bgMusic" loop>
   <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=soft-romantic-piano-112199.mp3" type="audio/mpeg">
 </audio>
 
-<button class="music-btn" id="musicToggle">
-  <span id="musicIcon">🎵</span> <span id="musicText">Play Music</span>
-</button>
+<div id="stars" aria-hidden="true"></div>
 
 <header>
   <div class="logo">A LETTER FROM MY HEART ♡</div>
@@ -556,7 +574,7 @@ footer {
 
       <div class="memory-grid">
         <div class="memory-card">
-          <img src="image/IMG-20250726-WA0012.jpg" alt="Memory Photo 1">
+          <img src="image/IMG-20260221-WA0027.png" alt="Memory Photo 1">
           <div class="symbol">☁</div>
           <h3>The Little Things</h3>
           <p>The little conversations and ordinary moments that once made a day feel special.</p>
@@ -678,6 +696,16 @@ footer {
 </footer>
 
 <script>
+/* Intro Overlay & Music Trigger */
+const introOverlay = document.getElementById("intro-overlay");
+const openBtn = document.getElementById("openBtn");
+const bgMusic = document.getElementById("bgMusic");
+
+openBtn.addEventListener("click", () => {
+  introOverlay.classList.add("hidden");
+  bgMusic.play().catch(e => console.log("Audio play blocked:", e));
+});
+
 /* Soft background stars */
 const stars = document.getElementById("stars");
 
@@ -689,26 +717,6 @@ for (let n = 0; n < 65; n++) {
   star.style.animationDelay = Math.random() * 3 + "s";
   stars.appendChild(star);
 }
-
-/* Background Music Toggle */
-const bgMusic = document.getElementById("bgMusic");
-const musicToggle = document.getElementById("musicToggle");
-const musicIcon = document.getElementById("musicIcon");
-const musicText = document.getElementById("musicText");
-let isPlaying = false;
-
-musicToggle.addEventListener("click", () => {
-  if (isPlaying) {
-    bgMusic.pause();
-    musicIcon.textContent = "🎵";
-    musicText.textContent = "Play Music";
-  } else {
-    bgMusic.play();
-    musicIcon.textContent = "⏸️";
-    musicText.textContent = "Pause Music";
-  }
-  isPlaying = !isPlaying;
-});
 
 /* Floating hearts */
 const reducedMotion = window.matchMedia(
