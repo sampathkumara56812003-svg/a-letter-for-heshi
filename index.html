@@ -1,0 +1,755 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#170d1b">
+<meta name="description" content="A letter from the heart, written for Heshi.">
+<title>For Heshi, With Love 🤍</title>
+
+<style>
+:root {
+  --bg: #170d1b;
+  --panel: #251526;
+  --pink: #ff8bb8;
+  --light: #ffe2ee;
+  --muted: #d4bacd;
+  --gold: #e9c69b;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 20px;
+}
+
+body {
+  margin: 0;
+  color: var(--light);
+  background: var(--bg);
+  font-family: Georgia, "Times New Roman", serif;
+  line-height: 1.8;
+  overflow-x: hidden;
+}
+
+button, a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+}
+
+#stars {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.star {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: #fff;
+  border-radius: 50%;
+  animation: twinkle 3s infinite alternate;
+}
+
+@keyframes twinkle {
+  from { opacity: .15; transform: scale(.7); }
+  to { opacity: .9; transform: scale(1.4); }
+}
+
+main, header, footer {
+  position: relative;
+  z-index: 1;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px clamp(18px, 6vw, 70px);
+  border-bottom: 1px solid #ffffff12;
+}
+
+.logo {
+  color: var(--pink);
+  font-size: 14px;
+  letter-spacing: 2px;
+}
+
+nav {
+  display: flex;
+  gap: 20px;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+nav a:hover {
+  color: var(--pink);
+}
+
+section {
+  padding: 85px 22px;
+}
+
+.container {
+  width: 100%;
+  max-width: 760px;
+  margin: auto;
+}
+
+.hero {
+  min-height: 88svh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 70px 22px;
+  background:
+    radial-gradient(ellipse at 50% 35%,
+    #7d294d55 0%, transparent 65%);
+}
+
+.hero-inner {
+  max-width: 660px;
+  animation: fadeUp 1.5s ease both;
+}
+
+.eyebrow {
+  color: var(--gold);
+  font-family: Arial, sans-serif;
+  font-size: 11px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 25px 0 15px;
+  font-size: clamp(43px, 10vw, 78px);
+  line-height: 1.12;
+  font-weight: normal;
+}
+
+h1 span {
+  color: var(--pink);
+  font-style: italic;
+}
+
+.hero p {
+  max-width: 480px;
+  margin: 20px auto;
+  color: var(--muted);
+  font-size: clamp(15px, 3.5vw, 18px);
+}
+
+.heart-symbol {
+  display: inline-block;
+  color: var(--pink);
+  font-size: 40px;
+  margin-bottom: 8px;
+  animation: heartbeat 2s infinite;
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  10% { transform: scale(1.16); }
+  20% { transform: scale(1); }
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 12px 24px;
+  margin: 12px 5px;
+  border: 1px solid #ff8bb866;
+  border-radius: 50px;
+  background: #ff8bb812;
+  color: var(--light);
+  cursor: pointer;
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+  transition: .3s;
+}
+
+.btn:hover {
+  background: #ff8bb82b;
+  transform: translateY(-2px);
+}
+
+.btn.primary {
+  background: var(--pink);
+  color: #301324;
+  border-color: var(--pink);
+}
+
+.section-label {
+  color: var(--gold);
+  font-family: Arial, sans-serif;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+h2 {
+  margin: 12px 0 22px;
+  font-size: clamp(30px, 7vw, 48px);
+  font-weight: normal;
+  line-height: 1.25;
+}
+
+h2 em {
+  color: var(--pink);
+}
+
+p {
+  overflow-wrap: anywhere;
+}
+
+.intro {
+  text-align: center;
+}
+
+.intro p {
+  color: var(--muted);
+  max-width: 590px;
+  margin: 15px auto;
+}
+
+.divider {
+  width: 65px;
+  height: 1px;
+  margin: 30px auto;
+  background: var(--pink);
+  opacity: .7;
+}
+
+.memories {
+  background: linear-gradient(180deg, transparent, #301b2b77, transparent);
+}
+
+.memory-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 30px;
+}
+
+.memory-card {
+  min-height: 155px;
+  padding: 23px 18px;
+  border: 1px solid #ffffff13;
+  border-radius: 18px;
+  background: linear-gradient(145deg, #ffffff0b, #ff8bb809);
+}
+
+.memory-card .symbol {
+  font-size: 27px;
+}
+
+.memory-card h3 {
+  margin: 9px 0;
+  font-size: 19px;
+  font-weight: normal;
+}
+
+.memory-card p {
+  margin: 0;
+  color: var(--muted);
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.letter-wrap {
+  padding: clamp(23px, 6vw, 50px);
+  border: 1px solid #ff8bb833;
+  border-radius: 22px;
+  background:
+    radial-gradient(ellipse at top, #77345235, transparent 65%),
+    #211421;
+  box-shadow: 0 20px 70px #00000022;
+}
+
+.letter-wrap p {
+  color: #f2dce8;
+  font-size: clamp(15px, 3.5vw, 17px);
+  line-height: 2;
+}
+
+#letter {
+  white-space: pre-line;
+}
+
+.cursor {
+  display: inline-block;
+  width: 2px;
+  height: 18px;
+  background: var(--pink);
+  animation: blink .7s infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+.quote {
+  margin: 30px 0;
+  padding-left: 20px;
+  border-left: 2px solid var(--pink);
+  color: var(--pink);
+  font-style: italic;
+  font-size: 19px;
+}
+
+.new-beginning {
+  text-align: center;
+  background: radial-gradient(ellipse at center, #65294335, transparent 70%);
+}
+
+.new-beginning p {
+  max-width: 590px;
+  margin: 15px auto;
+  color: var(--muted);
+}
+
+.invitation {
+  margin-top: 30px;
+  padding: 30px 22px;
+  border: 1px solid #ffffff18;
+  border-radius: 20px;
+  background: #ffffff06;
+}
+
+.invitation h3 {
+  font-size: clamp(24px, 6vw, 35px);
+  font-weight: normal;
+}
+
+#response {
+  min-height: 45px;
+  color: var(--pink);
+  font-size: 14px;
+}
+
+.closing {
+  text-align: center;
+  padding-bottom: 100px;
+}
+
+.closing .signature {
+  color: var(--pink);
+  font-style: italic;
+  font-size: 25px;
+}
+
+footer {
+  text-align: center;
+  padding: 25px 15px;
+  color: #bca6b8;
+  font-family: Arial, sans-serif;
+  font-size: 11px;
+  border-top: 1px solid #ffffff12;
+}
+
+.float-heart {
+  position: fixed;
+  bottom: -30px;
+  z-index: 3;
+  pointer-events: none;
+  animation: floatUp 8s linear forwards;
+  opacity: 0;
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+  10% { opacity: .7; }
+  90% { opacity: .4; }
+  100% { transform: translateY(-110vh) rotate(30deg); opacity: 0; }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity .8s ease, transform .8s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 520px) {
+  header {
+    padding: 15px;
+  }
+
+  nav {
+    gap: 10px;
+    font-size: 10px;
+  }
+
+  .logo {
+    font-size: 11px;
+    letter-spacing: 1px;
+  }
+
+  section {
+    padding: 65px 18px;
+  }
+
+  .hero {
+    min-height: 82svh;
+  }
+
+  .memory-grid {
+    gap: 10px;
+  }
+
+  .memory-card {
+    min-height: 160px;
+    padding: 16px 12px;
+  }
+
+  .memory-card h3 {
+    font-size: 16px;
+  }
+
+  .btn {
+    max-width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+</style>
+</head>
+
+<body>
+<div id="stars" aria-hidden="true"></div>
+
+<header>
+  <div class="logo">A LETTER FROM MY HEART ♡</div>
+  <nav>
+    <a href="#memories">Memories</a>
+    <a href="#letter-section">My Letter</a>
+    <a href="#again">A New Beginning</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="heart-symbol">♡</div>
+      <div class="eyebrow">Something I've wanted to say</div>
+      <h1>For you,<br><span>Heshi.</span></h1>
+      <p>
+        Some words take time to find.
+        Some feelings take time to understand.
+        And some people continue to mean something to us,
+        even when life takes a different turn.
+      </p>
+      <a class="btn primary" href="#memories">Read my letter ↓</a>
+      <div style="font-size:12px;color:#bca6b8;margin-top:20px">
+        Made with honesty, care and a little hope.
+      </div>
+    </div>
+  </section>
+
+  <section class="intro reveal">
+    <div class="container">
+      <div class="section-label">Before anything else</div>
+      <h2>This isn't about<br><em>changing the past.</em></h2>
+      <p>
+        It's about being honest about what it meant to me,
+        what I've learned, and what I still carry in my heart.
+      </p>
+      <div class="divider"></div>
+      <p>
+        You don't have to read this with any expectations.
+        I simply wanted to say these things once,
+        properly, from my heart.
+      </p>
+    </div>
+  </section>
+
+  <section class="memories" id="memories">
+    <div class="container reveal">
+      <div class="section-label">A part of our story</div>
+      <h2>Things I'll always<br><em>remember.</em></h2>
+      <p style="color:var(--muted)">
+        Not every memory has to hurt. Some can simply remain
+        beautiful parts of the lives we lived.
+      </p>
+
+      <div class="memory-grid">
+        <div class="memory-card">
+          <div class="symbol">☁</div>
+          <h3>The Little Things</h3>
+          <p>The little conversations and ordinary moments that once made a day feel special.</p>
+        </div>
+
+        <div class="memory-card">
+          <div class="symbol">♡</div>
+          <h3>The Feeling</h3>
+          <p>What it felt like to care about someone and have a person who mattered so much.</p>
+        </div>
+
+        <div class="memory-card">
+          <div class="symbol">✧</div>
+          <h3>What I Learned</h3>
+          <p>That love also needs patience, understanding, honesty and effort.</p>
+        </div>
+
+        <div class="memory-card">
+          <div class="symbol">🌱</div>
+          <h3>What Remains</h3>
+          <p>Gratitude for the good things, and hope that we can both keep growing.</p>
+        </div>
+      </div>
+
+      <p style="font-size:12px;color:#bca6b8;margin-top:22px">
+        You can replace these with your real memories and photos later.
+      </p>
+    </div>
+  </section>
+
+  <section id="letter-section">
+    <div class="container reveal">
+      <div class="section-label">Something from my heart</div>
+      <h2>What I never quite<br><em>knew how to say.</em></h2>
+
+      <div class="letter-wrap">
+        <div style="color:var(--pink);font-size:25px">Dear Heshi, ♡</div>
+        <p id="letter"></p><span class="cursor" id="cursor"></span>
+        <button class="btn" id="showLetter" type="button">Read the full letter</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="new-beginning" id="again">
+    <div class="container reveal">
+      <div class="section-label">Not a promise. Just a hope.</div>
+      <h2>What if we could<br><em>talk again?</em></h2>
+
+      <p>
+        I know life and family circumstances made things difficult
+        for us. I can't pretend those things were simple, and I
+        don't expect one letter to solve everything.
+      </p>
+
+      <p>
+        I still love you, Heshi. I'm not saying that to make you
+        feel responsible for my feelings. I'm saying it because
+        it's the truth, and I wanted to be honest with you.
+      </p>
+
+      <p>
+        I sometimes wonder whether, with more understanding,
+        patience and honest conversations, we could find a better
+        way forward. Not by pretending nothing happened, but by
+        learning from it and listening to each other.
+      </p>
+
+      <div class="quote">
+        “I don't want us to become who we used to be.
+        If we ever try again, I'd want us to become something
+        better, together.”
+      </div>
+
+      <p>
+        If you don't feel the same way, I'll respect that.
+        You don't owe me an answer, and you don't have to decide
+        anything because of this page.
+      </p>
+
+      <div class="invitation">
+        <div style="font-size:30px;color:var(--pink)">♡</div>
+        <h3>Heshi, would you be open<br>to talking about us?</h3>
+        <p>
+          Just an honest conversation, whenever and if you're
+          comfortable. No pressure. No expectations.
+        </p>
+
+        <a class="btn primary"
+           href="https://wa.me/?text=Hi%20Heshi%2C%20I%20made%20something%20I%20wanted%20to%20share%20with%20you.%20Whenever%20you%27re%20comfortable%2C%20I%27d%20be%20happy%20to%20talk.%20No%20pressure.%20%3C3"
+           target="_blank" rel="noopener">
+          Maybe we can talk 🤍
+        </a>
+
+        <button class="btn" id="gentleButton" type="button">
+          I just wanted you to know
+        </button>
+
+        <div id="response" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="closing reveal">
+    <div class="container">
+      <div style="font-size:35px;color:var(--pink)">♡</div>
+      <p>
+        Whatever tomorrow brings, I genuinely wish you
+        peace, happiness and beautiful things ahead.
+      </p>
+      <p class="signature">With a sincere heart,</p>
+      <p style="color:var(--gold)">Someone who still cares about you.</p>
+      <p style="font-size:12px;color:#bca6b8">
+        Thank you for taking the time to read this.
+      </p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  MADE WITH CARE ♡ &nbsp; A LETTER FOR HESHI
+</footer>
+
+<script>
+/* Soft background stars */
+const stars = document.getElementById("stars");
+
+for (let n = 0; n < 65; n++) {
+  const star = document.createElement("span");
+  star.className = "star";
+  star.style.left = Math.random() * 100 + "%";
+  star.style.top = Math.random() * 100 + "%";
+  star.style.animationDelay = Math.random() * 3 + "s";
+  stars.appendChild(star);
+}
+
+/* Floating hearts */
+const reducedMotion = window.matchMedia(
+  "(prefers-reduced-motion: reduce)"
+).matches;
+
+if (!reducedMotion) {
+  setInterval(() => {
+    const heart = document.createElement("span");
+    heart.className = "float-heart";
+    heart.textContent = ["♡", "♥", "✧"][Math.floor(Math.random() * 3)];
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (14 + Math.random() * 18) + "px";
+    heart.style.color = Math.random() > .5 ? "#ff8bb8" : "#e9c69b";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 8000);
+  }, 1000);
+}
+
+/* Reveal sections as you scroll */
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("visible");
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+
+/* Letter typing effect */
+const letterText = `I have thought about how to say this for a long time.
+
+Even though life didn't turn out the way we once hoped, I still care about you. What we shared mattered to me, and I don't want to pretend it meant nothing.
+
+I know our circumstances and the difficulties around us were not easy. Sometimes things happen that are bigger than two people, and feelings alone cannot solve every problem. I understand that better now.
+
+I'm not writing this to blame anyone, to ask you to forget the past, or to make you feel that you owe me another chance.
+
+I just want to be honest. I still love you, Heshi. And a part of me still hopes that one day we might be able to talk openly about everything, understand each other a little better, and see what is possible.
+
+If we ever choose to try again, I would want it to be with more patience, more understanding, and more care for what both of us need.
+
+And if your heart has moved in a different direction, I will respect that too. Your happiness matters, even when things are not what I hoped for.
+
+For now, I simply wanted you to know the truth about how I feel.
+
+Thank you for being a part of my life.`;
+
+const letter = document.getElementById("letter");
+const cursor = document.getElementById("cursor");
+const showButton = document.getElementById("showLetter");
+
+let letterIndex = 0;
+let typingTimer = null;
+let started = false;
+
+function showFullLetter() {
+  clearTimeout(typingTimer);
+  letter.textContent = letterText;
+  cursor.style.display = "none";
+  showButton.style.display = "none";
+  started = true;
+}
+
+function typeLetter() {
+  if (started) return;
+  started = true;
+  showButton.style.display = "inline-flex";
+
+  function typeNext() {
+    if (letterIndex < letterText.length) {
+      letter.textContent += letterText.charAt(letterIndex);
+      letterIndex++;
+      typingTimer = setTimeout(typeNext, 27);
+    } else {
+      cursor.style.display = "none";
+      showButton.style.display = "none";
+    }
+  }
+
+  typeNext();
+}
+
+showButton.addEventListener("click", showFullLetter);
+
+const letterObserver = new IntersectionObserver(entries => {
+  if (entries[0].isIntersecting) {
+    typeLetter();
+    letterObserver.disconnect();
+  }
+}, { threshold: 0.15 });
+
+letterObserver.observe(document.getElementById("letter-section"));
+
+/* Gentle closing message */
+document.getElementById("gentleButton").addEventListener("click", () => {
+  document.getElementById("response").textContent =
+    "That's all I wanted to say, Heshi. Take care of yourself. 🤍";
+});
+</script>
+</body>
+</html>
